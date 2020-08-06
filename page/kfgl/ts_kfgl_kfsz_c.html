@@ -1,0 +1,286 @@
+<!--
+ * @陕西唐远
+ * @文件名: 
+ * @作者: 张黎博
+ * @Git: zlb
+ * @Date: 2020-07-02 17:55:05
+ * @描述: 
+ * @版本: 1.00
+ * @修改历史纪录: （版本 修改时间 修改人 修改内容）
+ * @记录:  
+-->
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    <link href="/SXSY/layuiadmin/layui/css/layui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/SXSY/layuiadmin/style/admin.css" media="all">
+    <link href="/SXSY/Widget/yanzheng/css/verify.css" rel="stylesheet" />
+
+    <!-- <link rel="stylesheet" href="../../../lib/css/font-awesome/css/font-awesome.css" /> -->
+</head>
+<style>
+    .layui-disabled,
+    .layui-disabled:hover {
+        color: red!important;
+    }
+    
+    .me-hide {
+        display: none;
+    }
+    
+    .layui-form-select dl {
+        height: 150px;
+    }
+</style>
+
+<body>
+    <div class="layui-fluid">
+
+        <div class="layui-card">
+            <div class="layui-card-header" style="margin-top: 5px;">
+                <div class="" style="display: flex;align-items: center;align-items: center;
+                padding: 10px;">
+                    <button class="layui-btn layui-btn-primary  layui-btn-sm layui-hide" id="addCeng">增加层数</button>
+                    <button class="layui-btn layui-btn-primary  layui-btn-sm layui-hide" id="delCeng">删除当前层</button>
+                    <button class="layui-btn layui-btn-primary  layui-btn-sm layui-hide" id="delAllLevel">删除所有层</button>
+                </div>
+
+            </div>
+            <div class="layui-card-body">
+                <table lay-data="{skin:'row', even:true, size:'lg'}" class="layui-table layuiadmin-page-table" id="grid_table" lay-filter="grid_table">
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--修改弹框-->
+    <form class="layui-form  site-text" id="editLayerHtml" style="display: none;width: 100%;">
+        <input type="hidden" id="editId" value="" />
+        <div class="layui-card-body layui-row layui-form-item">
+            <div class="layui-col-md12 layui-inline">
+                <label class="layui-form-label"><span class="spark">*</span>分区号</label>
+                <div class="layui-input-block">
+                    <input type="text" id="editfenquhao" placeholder="请输入分区号" autocomplete="off" class="layui-input" lay-verify="required">
+
+                </div>
+
+            </div>
+            <div class="layui-col-md12 layui-inline">
+                <label class="layui-form-label"><span class="spark">*</span>最大容量</label>
+                <div class="layui-input-block">
+                    <input type="text" name="" id="editronglinag" placeholder="请输入最大容量" autocomplete="off" class="layui-input">
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="layui-form-item site-text" style="text-align: center;">
+            <div class="">
+                <span class="layui-btn own-btn-green" id="editsubmit" lay-submit>确认</span>
+
+            </div>
+        </div>
+    </form>
+
+
+    <!--批量删除的弹框-->
+    <form class="layui-form  site-text" id="deleteHtml" style="display: none;width: 100%;">
+
+        <div class="layui-card-body layui-row layui-form-item">
+            <div class="layui-card-header">
+                <div>
+                    <i class="fa fa-institution own-text-blue " style="font-size: 24px;"></i>&nbsp;&nbsp;
+                    <span id="delMoreStoreName"><span>
+						
+					</div>
+				</div>
+
+				<div class="layui-form-item site-text" style="text-align: center;">
+					<div class="" style="padding-top:15px;">
+				
+                    <span class="layui-btn" id="delAllFrame">删除所有柜架</span>
+                    <span class="layui-btn" id="delAllLevel">删除所有层</span>
+                    <span class="layui-btn" id="delAllArea">删除所有分区</span>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--添加弹框-->
+    <form class="layui-form  site-text" id="addLayerHtml" style="display: none;width: 100%;">
+        <div class="layui-card-body layui-row layui-form-item">
+            <div class="layui-col-md12 layui-inline">
+                <label class="layui-form-label"><span class="spark">*</span>库房名称</label>
+                <div class="layui-input-block">
+                    <input type="text" id="库房名" name="XDLM库房名" readonly placeholder="请输入库房名称" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-col-md12 layui-inline">
+                <label class="layui-form-label"><span class="spark">*</span>柜架号</label>
+                <div class="layui-input-block">
+                    <input type="text" id="柜架号" name="XDLM柜架号" readonly placeholder="请输入柜架号" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-col-md12 layui-inline">
+                <label class="layui-form-label"><span class="spark">*</span>层号</label>
+                <div class="layui-input-block">
+                    <input type="text" id="层号" name="XDLM层号" placeholder="请输入层号" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item site-text" style="text-align: center;">
+            <div class="">
+                <span class="layui-btn own-btn-green" id="addsubmit" lay-submit lay-filter="addsubmit">确认</span>
+            </div>
+        </div>
+    </form>
+    <!--一键添加弹框-->
+    <form class="layui-form  site-text" id="quicklyLayerHtml" style="display: none;width: 100%;">
+
+        <div class="layui-card-body layui-row layui-form-item">
+            <div class="layui-col-sm12">
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        <div><i class="fa fa-institution own-text-blue " style="font-size: 24px;"></i>&nbsp;&nbsp;<span id="quicklyStoreName"><span></div></div>
+						<div class="layui-card-body">
+							<div class="layui-tab-content">
+								<div class="layui-tab-item layui-show">
+									<table class="layui-table layuiadmin-page-table" lay-skin="line">
+										<thead>
+											<tr>
+												<th>项目名称</th>
+												<th>名称前缀格式</th>
+												<th>名称前缀</th>
+												<th>总数设置</th>
+												<th>名称后缀</th>
+											</tr>
+										</thead>
+										<tbody>
+
+											<tr>
+												<td>库柜名称</td>
+												<td><select class="layui-input" name="XDLMCNTRMark" id="">
+													<option value="数字">数字</option>
+													<option value="字母">字母</option>
+												</select></td>
+												<td><input type="text" name="XDLMCNTRPrefix" id="" value="" class="layui-input" /></td>
+												<td><input type="text" name="XDLMCNTR" class="layui-input" value="10"  id="CNTR"/></td>
+												<td><input type="text" name="XDLMCNTRSuffix" class="layui-input" value="柜号"/></td>
+											</tr>
+											<tr>
+												<td>层别名称</td>
+												<td><select class="layui-input" name="XDLMLevelMark" id="">
+													<option value="数字">数字</option>
+													<option value="字母">字母</option>
+												</select></td>
+												<td><input type="text" name="XDLMLevelPrefix" value="" class="layui-input" /></td>
+												<td><input type="text" name="XDLMLevel" class="layui-input" value="5"/></td>
+												<td><input type="text" name="XDLMLevelSuffix" class="layui-input" value="层" /></td>
+											</tr>
+											<tr>
+												<td>区域名称</td>
+												<td><select class="layui-input" name="XDLMAreaMark" id="">
+													<option value="数字">数字</option>
+													<option value="字母">字母</option>
+												</select></td>
+												<td><input type="text" name="XDLMAreaPrefix" value="" class="layui-input" /></td>
+												<td><input type="text" name="XDLMArea" class="layui-input" value="3"/></td>
+												<td><input type="text" name="XDLMAreaSuffix" class="layui-input" value="区" /></td>
+											</tr>
+											<tr >
+												<td>最大容量</td>
+												<td colspan="4">
+													<input type="text" name="XDLMMaxCapacity" class="layui-input" value="5"/></td>
+												
+											</tr>
+
+										</tbody>
+									</table>
+									<span class="spark" style="float: right;"><i class="fa fa-smile-o " ></i>&nbsp;&nbsp;温馨提示：支持多种格式的形式！</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="layui-form-item site-text" style="text-align: center;">
+            <div class="">
+                <span class="layui-btn own-btn-green" id="quicklysubmit" lay-submit lay-filter="quckliyBtn">确认</span>
+            </div>
+        </div>
+    </form>
+    <!-- 修改库房排序 -->
+    <form class="layui-form  site-text" id="editkfsortHtml" style="display: none;width: 100%;">
+
+        <div class="layui-card-body layui-row layui-form-item">
+            <input type="hidden" name="XDLMCID" autocomplete="off" value="6000">
+            <input type="hidden" name="XDLMSID" autocomplete="off" value="DYBH201908231246284628143155">
+            <input type="hidden" id="kfdhid" name="XDLMID" autocomplete="off" value="">
+            <div class="layui-col-md12 layui-inline">
+                <label class="layui-form-label">库房名称</label>
+                <div class="layui-input-block">
+                    <input type="text" id="pxkfname" placeholder="请输入库房名称" disabled autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-col-md12 layui-inline">
+                <label class="layui-form-label">当前排序</label>
+                <div class="layui-input-block">
+                    <input type="text" id="pxkfpx" autocomplete="off" disabled class="layui-input">
+                </div>
+            </div>
+            <div class="layui-col-md12 layui-inline">
+                <label class="layui-form-label"><span class="spark">*</span>修改排序为</label>
+                <div class="layui-input-block">
+                    <input type="number" min="1" name="XDLM序号" id="序号" placeholder="请输入排序" lay-verify="required" autocomplete="off " class="layui-input ">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item site-text " style="text-align: center; ">
+            <div class=" ">
+                <span class="layui-btn own-btn-green " id="xgpx" lay-submit lay-filter="xgpx">确认</span>
+            </div>
+        </div>
+    </form>
+
+    <!-- 删除当前层 -->
+    <form class="layui-form  site-text" id="delgcdiv" style="display: none;width: 100%;">
+        <div class="layui-card-body layui-row layui-form-item">
+            <div class="layui-col-md12 layui-inline">
+                <label class="layui-form-label">柜架号</label>
+                <div class="layui-input-block">
+                    <input type="text" id="del_gjh" disabled class="layui-input">
+                </div>
+            </div>
+            <div class="layui-col-md12 layui-inline">
+                <label class="layui-form-label">柜层号</label>
+                <div class="layui-input-block">
+                    <select id="del_gch"></select>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item site-text" style="text-align: center; ">
+            <div class=" ">
+                <span class="layui-btn own-btn-green" id="delthissubmit">确认</span>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
+
+
+<script src="/SXSY/layuiadmin/layui/layui.js"></script>
+<script src="/SXSY/js/jquery-1.11.3.min.js"></script>
+<script src="/SXSY/Widget/yanzheng/js/verify.js"></script>
+<script src="/SXSY/js/SysCongfig.js"></script>
+<script type="text/javascript " src="../../js/kfgl/ts_kfgl_kfsz_c.js"></script>

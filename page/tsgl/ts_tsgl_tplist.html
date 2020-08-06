@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/SXSY/layuiadmin/layui/css/layui.css" />
+    <link rel="stylesheet" href="/SXSY/layuiadmin/style/admin.css">
+    <!-- <link rel="stylesheet" href="/SXSY/Widget/yanzheng/css/verify.css" /> -->
+    <!-- <script src="/SXSY/js/jquery-1.11.3.min.js"></script> -->
+    <script type="text/javascript" src="../../Widget/jQuery-pbl/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../../Widget/jQuery-pbl/js/jQueryColor.js"></script>
+    <script type="text/javascript" src="../../Widget/jQuery-pbl/js/jquery.masonry.min.js"></script>
+    <script type="text/javascript" src="../../Widget/jQuery-pbl/js/jQeasing.js"></script>
+    <script src="/SXSY/layuiadmin/layui/layui.js"></script>
+    <!-- <script src="/SXSY/Widget/yanzheng/js/verify.js"></script> -->
+    <script src="/SXSY/js/SysCongfig.js"></script>
+    <script src="../../js/tsgl/ts_tsgl_tplist.js"></script>
+</head>
+<style>
+    body,
+    html {
+        background: #FFFFFF;
+    }
+    
+    .content {
+        padding: 10px 20px;
+        overflow: auto;
+        box-sizing: border-box;
+    }
+    /*.waterfull {
+        margin: auto;
+    }*/
+    
+    .item img {
+        max-width: 280px;
+    }
+    
+    .item {
+        /* padding: 10px !important;
+        box-shadow: 5px 5px 5px #b6b6b6;
+        background: #fafafa;
+        margin-bottom: 15px;
+        opacity: 1;
+        border: 1px solid rgb(218, 218, 218);
+        box-sizing: border-box;
+        border-radius: 7px;
+        width: 300px; */
+        padding: 10px !important;
+        box-shadow: 5px 5px 5px #b6b6b6;
+        background: #fafafa;
+        margin-bottom: 15px;
+        opacity: 1;
+        top: 112px;
+        position: absolute;
+        left: 400px;
+        /*border-radius: 5px;*/
+        border: 1px solid rgb(218, 218, 218);
+        box-sizing: border-box;
+        border-radius: 7px;
+        width: 300px;
+    }
+    
+    .li-title {
+        font-size: 14px;
+        line-height: 30px;
+        text-align: center;
+        display: inline-block;
+        text-align: left;
+        float: left;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    .description {
+        line-height: 30px;
+    }
+    
+    .insideBtn {
+        display: inline-block;
+        text-align: right;
+        border-radius: 4px;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 10px;
+        float: right;
+    }
+    
+    .formation {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        padding: 10px 60px 0px 0px;
+        box-sizing: border-box;
+        min-height: 50px;
+    }
+    
+    .detail-btn {
+        position: absolute;
+        top: 50%;
+        margin-top: -10px;
+        right: 0px;
+    }
+    
+    .operate-div .layui-form-select {
+        width: 150px;
+    }
+    
+    .a-img {
+        text-align: center;
+    }
+    /* #masonry {
+        width: auto;
+        height: auto;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    } */
+</style>
+
+<body>
+    <div class="layui-form">
+        <div class="layui-card-header layuiadmin-card-header-auto">
+            <div class="layui-form-item operate-div" id="">
+                <div class="layui-inline">
+                    <label class="layui-form-label">查询类别：</label>
+                    <div class="layui-inline">
+                        <select id="queryT" lay-search lay-filter="queryT"></select>
+                    </div>
+                </div>
+                <div class="layui-inline search-type check-type" data-value="qvalue" id="keyworDiv">
+                    <label class="layui-form-label">关键字：</label>
+                    <div class="layui-inline" style="width: 260px;">
+                        <input type="text" placeholder="请输入" id="queryK" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn own-btn-red" type="button" name="searchData" id="searchData">查询</button>
+                    <button class="layui-btn" id="updateTable">重新加载</button>
+                </div>
+                <div class="layui-inline">
+                    <div id="test1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="bg-right"></div>
+        <!-- 瀑布流样式开始 -->
+        <div class="waterfull clearfloat" id="waterfull">
+            <ul class="masonry" id="masonry"></ul>
+        </div>
+        <div class="bg-left"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,539 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font-family: "Microsoft YaHei";
+}
+
+body {
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#container {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    background: url("../images/login_bgAll.jpg") no-repeat;
+    background-size: 100% 100%;
+
+}
+
+.login-box {
+    position: absolute;
+    right: 50px;
+    top: 150px;
+    padding: 40px 20px 20px 20px;
+    width: 400px;
+}
+
+
+/* 外层 */
+
+.loginTitle {
+    width: 110px;
+    height: 26px;
+    background: url("../images/userlogin.png") no-repeat;
+    margin: 0 auto;
+}
+
+
+/* 隔层 */
+
+.dltab {
+    /*	width:100%;*/
+    height: 35px;
+    width: 350px;
+    margin: 0 auto;
+}
+
+
+/* 小层背景图 */
+
+.login-content {
+    width: 1095px;
+    height: 598px;
+    background: url("../images/bg-content.jpg");
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: auto;
+}
+
+
+/* 账号 */
+
+.nameDiv {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    height: 50px;
+    font-size: 12px;
+    border-bottom: 1px solid #CBDBF3;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    margin: 10px auto;
+}
+
+
+/* 密码 */
+
+.psddiv {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    margin-top: 20px;
+    height: 50px;
+    font-size: 12px;
+    border-bottom: 1px solid #D7E2E1;
+    border-radius: 2px;
+    margin: 10px auto;
+    margin-bottom: 0;
+}
+
+
+/* 登录 */
+
+.loginButton {
+    width: 200px;
+    /*	margin-top:20px;*/
+    height: 45px;
+    font-size: 16px;
+    border-radius: 30px;
+    background: #1E62CF;
+    cursor: pointer;
+    margin: 20px auto;
+    line-height: 45px;
+    color: #fff;
+    text-align: center;
+}
+
+
+/* 登录框里面的input */
+
+.logincontent input {
+    /*	    box-shadow: none;*/
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    width: 97%;
+    height: 100%;
+    font-size: 14px;
+    color: #666;
+    padding-left: 10px;
+}
+
+
+/* input框和富文本文字颜色 */
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #A8BBDB;
+}
+
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #A8BBDB;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #A8BBDB;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #A8BBDB;
+}
+
+
+/* 直接登录，扫描登录 */
+
+.login_type_switch {
+    font-size: 12px;
+    width: 350px;
+    margin: 10px auto;
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.dxtype:hover {
+    color: #65C0ED;
+}
+
+.dxtype {
+    width: 50%;
+    height: 30px;
+    line-height: 30px;
+    float: left;
+}
+
+.dxtype a {
+    color: #999;
+    text-decoration: none;
+}
+
+.dxtype a:hover {
+    color: #65C0ED;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.input-style {
+    background: none;
+}
+
+
+/*底部样式*/
+
+.layui-footer {
+    width: 100%;
+    /* color: #fff; */
+    position: absolute;
+    bottom: 30px;
+    padding: 0px 50px;
+    box-sizing: border-box;
+}
+
+.footer-left {
+    float: left;
+    width: 50%;
+    text-align: right;
+    padding: 0px 20px;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+.footer-right {
+    float: right;
+    width: 50%;
+    padding: 0px 20px;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+
+/* 办公 */
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font-family: "Microsoft YaHei";
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#ft {
+    color: #fff;
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    left: 0px;
+}
+
+.bottomp {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.login-box {
+    position: absolute;
+    right: 50px;
+    top: 150px;
+    padding: 40px 20px 20px 20px;
+    width: 400px;
+}
+
+
+/*
+#main {
+    position: relative;
+    top: 280px;
+    border-radius: 5px;
+    background-color: #F0FCFC;
+    width: 442px;
+    height: 442px;
+    margin: 0 auto;
+    min-height: 443px;
+    z-index: 2;
+}
+*/
+
+.login_t {
+    color: #666;
+    height: 40px;
+    text-align: left;
+    font-size: 18px;
+}
+
+.dltab {
+    /*	width:100%;*/
+    height: 35px;
+    width: 350px;
+    margin: 0 auto;
+}
+
+.dltab_c {
+    float: left;
+    /*    margin-bottom: -1px;*/
+    width: 50%;
+    border-bottom: 2px solid #D9DADA;
+    color: #a1a1a1;
+    text-align: center;
+    font-size: 20px;
+    padding-bottom: 5px;
+    line-height: 30px;
+    text-decoration: none;
+    -webkit-transition: border .2s cubic-bezier(0.43, 0.37, 1, 1);
+    transition: border .2s cubic-bezier(0.43, 0.37, 1, 1);
+}
+
+a.dltab_c:hover {
+    /*    border-bottom: 3px solid #3790EC;*/
+    color: #26c4ea;
+    text-decoration: none;
+}
+
+.cur {
+    border-bottom: 2px solid #59CFEB;
+    color: #26c4ea;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nameDiv {
+    width: 300px;
+    height: 50px;
+    /*    padding: 3px 0;*/
+    font-size: 12px;
+    border-bottom: 1px solid #CBDBF3;
+    /*    border-radius: 2px;*/
+    -moz-border-radius: 2px;
+    /* Firefox */
+    -webkit-border-radius: 2px;
+    /* Safari 和 Chrome */
+    border-radius: 2px;
+    /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+    margin: 10px auto;
+}
+
+.psddiv {
+    width: 300px;
+    margin-top: 20px;
+    height: 50px;
+    font-size: 12px;
+    border-bottom: 1px solid #D7E2E1;
+    border-radius: 2px;
+    margin: 10px auto;
+    margin-bottom: 0;
+}
+
+.sjdiv {
+    width: 300px;
+    margin-top: 20px;
+    height: 50px;
+    font-size: 12px;
+    border-bottom: 1px solid #D7E2E1;
+    border-radius: 2px;
+    margin: 10px auto;
+}
+
+.yzmdiv {
+    width: 300px;
+    margin-top: 20px;
+    height: 52px;
+    font-size: 14px;
+    /*    border: 1px solid #D7E2E1;*/
+    /*    border-radius: 2px;*/
+    margin: 10px auto;
+}
+
+.loginButton {
+    width: 200px;
+    /*	margin-top:20px;*/
+    height: 45px;
+    font-size: 16px;
+    border-radius: 30px;
+    background: #1E62CF;
+    cursor: pointer;
+    margin: 20px auto;
+    line-height: 45px;
+    color: #fff;
+    text-align: center;
+}
+
+.radioDiv {
+    width: 250px;
+    margin-top: 20px;
+    height: 30px;
+    font-size: 14px;
+    border-radius: 2px;
+    /*	background:url(/images/gr/login_btn.png) no-repeat left center;*/
+    margin: 20px auto;
+    cursor: pointer;
+    margin-left: 25px;
+}
+
+.logincontent input {
+    /*	    box-shadow: none;*/
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    width: 97%;
+    height: 100%;
+    font-size: 14px;
+    color: #666;
+    padding-left: 10px;
+}
+
+.yzmdiv {
+    border-bottom: 1px solid #D7E2E1;
+}
+
+.yzmdiv input {
+    display: block;
+    width: 170px;
+    height: 50px;
+    line-height: 50px;
+    float: left;
+    /*border:1px solid #D7E2E1;*/
+    border-right: none;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #A8BBDB;
+}
+
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #A8BBDB;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #A8BBDB;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #A8BBDB;
+}
+
+.yzmdiv .getyzmbtn {
+    display: block;
+    width: 110px;
+    height: 35px;
+    line-height: 35px;
+    padding: 0px;
+    font-size: 14px;
+    float: left;
+    color: #fff;
+    box-shadow: none;
+    background-color: #1E62CF;
+    text-align: center;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#yzm_forget {
+    border: none;
+    /*border-bottom: 1px solid #D7E2E1;*/
+}
+
+.login_type_switch {
+    font-size: 12px;
+    width: 350px;
+    margin: 10px auto;
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.dxtype:hover {
+    color: #65C0ED;
+}
+
+.dxtype {
+    width: 50%;
+    height: 30px;
+    line-height: 30px;
+    float: left;
+}
+
+.dxtype a {
+    color: #999;
+    text-decoration: none;
+}
+
+.dxtype a:hover {
+    color: #65C0ED;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.input-style {
+    background: none;
+}
+
+
+/*底部样式*/
+
+.layui-footer {
+    width: 100%;
+    /* color: #fff; */
+    position: absolute;
+    bottom: 30px;
+    padding: 0px 50px;
+    box-sizing: border-box;
+}
+
+.footer-left {
+    float: left;
+    width: 50%;
+    text-align: right;
+    padding: 0px 20px;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+.footer-right {
+    float: right;
+    width: 50%;
+    padding: 0px 20px;
+    box-sizing: border-box;
+    color: #fff;
+}

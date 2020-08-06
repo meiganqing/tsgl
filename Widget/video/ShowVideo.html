@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html >
+<head>
+     <!-- 防止IE8,7进入怪异模式 -->
+    <meta http-equiv="Content-Type" content="IE=Edge,chrome=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>视频预览</title>      
+    <!-- js通用样式 -->
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<!-- 滚动条主要样式 -->
+	<script type="text/javascript" src="js/jquery.nicescroll.js"></script>
+	<!-- 滚动条主要样式 -->
+	<style type="text/css">
+	/*格式化样式*/
+	body {margin: 0;padding: 0;font-family:Microsoft YaHei!important;background-color: #F5F5F5;}
+	ul,dl,dt,dd,h1,h2,h3,h4,h5,h6,form { padding:0; margin:0;}
+	ul { list-style:none;}
+	img { border:0px;}
+
+	a{text-decoration: none;outline: none;color:#444;}
+	a:visited{text-decoration: none;}
+	a:hover{cursor: pointer;text-decoration: none; color:#3C97D6;}
+	a:focus{-moz-outline-style: none;text-decoration: none;}
+	img{border: 0;}
+	.clear{clear: both;}
+	</style>
+	<!--- iframe切换停止播放js -->
+	<script type="text/javascript">
+	$(function() {
+		var iframe = $("div.video_player iframe");//播放页面
+		$('ul.video_list li a').click(function(){
+			iframe.attr("src",$(this).attr("name"));//更改iframe src
+			$('ul.video_list li a').removeClass('on');
+			$(this).addClass('on');//给点击的元素添加正在播放标识
+		});
+		
+	});
+    </script>
+    <!-- iframe切换停止播放js -->
+</head>
+<body>
+<div class="center">
+	<!-- 播放器 -->
+	<div class="video_player">
+		<iframe src="" frameborder="0" scrolling="auto" id="iframe" style="margin-left:10px;margin-top:10px;"></iframe>
+	</div>
+</div>
+<!-- 美化滚动条js -->
+<script type="text/javascript">
+	String.prototype.getQuery = function (name)
+{
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = this.substr(this.indexOf("?") + 1).match(reg);
+    if (r != null) return unescape(r[2]); return null;
+}
+	var path = window.location.href.getQuery("path");
+	var video_list_lenght=$("ul.video_list li").length;
+	$("ul.video_list").css("width",$("ul.video_list li").width()*video_list_lenght-7);// 减去margin-right的7px长度
+	$(".video_list_area").niceScroll({  
+		cursorcolor:" #c12e2e",  //#FF6666滚动条光标颜色
+		cursoropacitymax:1,      //改变不透明度，光标处于活动状态（scrollabar“可见”状态），范围从1到0
+		touchbehavior:false,     //使光标拖动滚动像在台式电脑触摸设备
+		autohidemode:false,      //是否隐藏滚动条
+		cursorwidth:"10px",      //像素光标的宽度
+		cursorborder:"0",        //游标边框css定义
+		cursorborderradius:"0px" //以像素为光标边界半径 
+	}); 
+	 var index = parent.layer.getFrameIndex(window.name);//获取窗口索引
+	 $('#iframe')[0].style.width=$(window).width()-20+'px';
+	  $('#iframe')[0].style.height=$(window).height()-20+'px';
+	  $(window).resize(function ()
+    {
+		$('#iframe')[0].style.width=$(window).width()-20+'px';
+		$('#iframe')[0].style.height=$(window).height()-20+'px';
+	});
+	$('#iframe').attr('src',''+path+'');
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="/SXSY/layuiadmin/layui/css/layui.css" />
+		<link rel="stylesheet" href="/SXSY/layuiadmin/style/admin.css">
+		<script src="/SXSY/js/jquery-1.11.3.min.js"></script>
+		<script src="/SXSY/layuiadmin/layui/layui.js"></script>
+		<script src="/SXSY/Widget/yanzheng/js/verify.js"></script>
+		<script src="/SXSY/js/SysCongfig.js"></script>
+		<script src="../../js/tssq/ts_tssq_jyjl_jd.js"></script>
+	</head>
+
+	<body>
+
+		<div class="layui-fluid">
+			<div class="layui-card">
+
+				<div class="layui-card-body">
+					<ul class="layui-timeline" id="layui-timeline">
+
+					</ul>
+				</div>
+			</div>
+
+		</div>
+
+	</body>
+
+</html>
+<script type="text/html" id="progressHtml">
+	 {{#  layui.each(d.data, function(index, item){ }}
+	<li class="layui-timeline-item">
+		<i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+		<div class="layui-timeline-content layui-text">
+			<h3 class="layui-timeline-title">{{item['记录时间']}}</h3>
+
+			<ul>
+				<li><span>操作人：</span><span>{{item['操作人']}}</span></li>
+				<li><span>状态：</span><span>{{item['类型']}}</span></li>
+				{{# if(item['内容']){ }}
+				<li><span>备注：</span><span>{{item['内容']}}</span></li>
+				{{#}}}
+			</ul>
+		</div>
+	</li>
+	{{#}) }}
+</script>

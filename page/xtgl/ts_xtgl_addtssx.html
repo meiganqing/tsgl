@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/SXSY/layuiadmin/layui/css/layui.css" />
+    <link rel="stylesheet" href="/SXSY/layuiadmin/style/admin.css">
+    <script src="/SXSY/js/jquery-1.11.3.min.js"></script>
+    <script src="/SXSY/layuiadmin/layui/layui.js"></script>
+    <script src="/SXSY/Widget/yanzheng/js/verify.js"></script>
+    <script src="/SXSY/js/SysCongfig.js"></script>
+    <script src="../../js/xtgl/ts_xtgl_addtssx.js"></script>
+</head>
+<style>
+    .layui-form-label{
+        min-width: 120px !important;
+    }
+    .layui-input-block input{
+        width: 400px !important;
+    }
+</style>
+
+<body>
+    <form class="layui-form  site-text" id="XMForm">
+        <div class="layui-card-body layui-row layui-form-item">
+            <div class="layui-col-md12 layui-inline" id="out_addkfmc">
+                <label class="layui-form-label"><span class="spark">*</span>类别</label>
+                <div class="layui-input-block">
+                    <input type="text" name="XDLM统计区分" value="" readonly="" id="统计区分" placeholder="请输入类别" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-col-md12 layui-inline" id="out_addkfmc">
+                <label class="layui-form-label"><span class="spark">*</span>图书属性名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="XDLM统计项目" id="统计项目" placeholder="请输入图书属性名称" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-col-md12 layui-inline " id="out_addgjh">
+                <label class="layui-form-label"><span class="spark">*</span>图书属性内容</label>
+                <div class="layui-input-block">
+                    <input type="text" name="XDLM统计内容" id="统计内容" placeholder="请输入文物属性内容" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-col-md12 layui-inline " id="out_addch">
+                <label class="layui-form-label"><span class="spark">*</span>图书属性内容简名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="XDLM统计内容简名" id="统计内容简名" placeholder="请输入图书属性内容简名" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-col-md12 layui-inline " id="out_addfqh">
+                <label class="layui-form-label"><span class="spark">*</span>位置序号</label>
+                <div class="layui-input-block">
+                    <input type="text" name="XDLM排序" id="排序" placeholder="请输入位置序号" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-form-item site-text" style="text-align: center;">
+            <div class="">
+                <!--<span class="layui-btn own-btn-green" id="addsubmit">确认</span>-->
+                <button class="layui-btn" id="submitBtn" lay-submit lay-filter="submitBtn">添加</button>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

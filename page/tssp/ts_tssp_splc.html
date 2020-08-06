@@ -1,0 +1,136 @@
+<!--
+ * @陕西唐远
+ * @文件名: 
+ * @作者: 张黎博
+ * @Git: zlb
+ * @Date: 2020-04-23 15:10:31
+ * @描述: 
+ * @版本: 1.00
+ * @修改历史纪录: （版本 修改时间 修改人 修改内容）
+ * @记录:  
+ -->
+<!doctype html>
+<html>
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <link href="/SXSY/layuiadmin/layui/css/layui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../widget/fontawesome/css/font-awesome.min.css" media="all">
+    <link rel="stylesheet" href="/SXSY/layuiadmin/style/admin.css">
+    <link rel="stylesheet" href="../../widget/wizard/wizard.css">
+    <link href="/SXSY/Widget/yanzheng/css/verify.css" rel="stylesheet" />
+    <script src="/SXSY/layuiadmin/layui/layui.js"></script>
+    <script src="/SXSY/js/jquery-1.11.3.min.js"></script>
+    <script src="/SXSY/Widget/yanzheng/js/verify.js"></script>
+    <script src="../../widget/wizard/wizard.js"></script>
+    <script src="/SXSY/js/SysCongfig.js"></script>
+    <script src="../../js/tssp/ts_tssp_splc.js"></script>
+    <title>资产领用审批</title>
+    <style>
+        .cg_title_label {
+            margin-top: 15px;
+        }
+        
+        .tabletitle {
+            text-align: right;
+        }
+        
+        .tablecontent {
+            text-align: center;
+        }
+    </style>
+</head>
+
+
+<body style="background: #fff;">
+    <div class="layui-container" style="padding:35px;">
+        <div class="shxs">
+            <p class="cg_title_label"> 流程说明 </p>
+            <hr class="layui-bg-green">
+            <div id="xmlc" style="margin-bottom:30px;"></div>
+        </div>
+
+        <div class="shxs">
+            <p class="cg_title_label"> 图书借书基本信息 </p>
+            <hr class="layui-bg-green">
+        </div>
+        <div class="shxs layui-fluid">
+            <table class="layui-table" style="table-layout:fixed;">
+                <!-- <colgroup>
+                    <col width="15%">
+                    <col width="35%">
+                    <col width="15%">
+                    <col width="35%">
+                </colgroup> -->
+                <tbody>
+                    <tr>
+                        <td class="tabletitle" style="text-align: center;">借阅人</td>
+                        <td id="creator" style="text-align: center;"></td>
+                    </tr>
+                    <tr>
+                        <td class="tabletitle" style="text-align: center;">申请时间</td>
+                        <td id="申请时间" style="text-align: center;"></td>
+                    </tr>
+                    <tr>
+                        <td class="tabletitle" style="text-align: center;">到期时间</td>
+                        <td id="到期时间" style="text-align: center;"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="shxs">
+            <p class="cg_title_label"> 借阅列表 </p>
+            <hr class="layui-bg-green">
+            <div class="site-block site-text">
+                <div class="layui-card" style="height: 330px;">
+                    <div class="layui-card-body">
+                        <table class="layui-table" id="grid_table" lay-filter="grid_table" lay-size="lg"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="shxs">
+            <p class="cg_title_label"> 流转意见 </p>
+            <hr class="layui-bg-green">
+            <div class="site-block site-text">
+                <ul class="layui-timeline" id="layui-timeline">
+                </ul>
+            </div>
+        </div>
+        <div id="shpart" class="shxs">
+            <p class="cg_title_label"> 审核状态 </p>
+            <hr class="layui-bg-green">
+            <div class="site-text" id="xmjd">
+                <form class="layui-form " id="XMFormlist" method="post">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="width: 90px;">审核状态</label>
+                        <div class="layui-input-block" style="width: 97%;">
+                            <input type="radio" name="constat" value="同意完成" title="同意完成" checked="" lay-filter="constat">
+                            <input type="radio" name="constat" value="不同意" title="不同意" lay-filter="constat">
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-hide" id="returnBackJD">
+                        <label class="layui-form-label" style="width: 90px;">退回节点</label>
+                        <div class="layui-input-block returnRadios" style="width: 90%;">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="width: 90px;">审核意见</label>
+                        <div class="layui-input-block" style="width: 97%;">
+                            <textarea id="zryj" class="layui-textarea" rows="7" style="width: 90%;"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item site-text" id="xgdiv">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit="" lay-filter="XMFormlist" id="submitBtn">审核通过</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

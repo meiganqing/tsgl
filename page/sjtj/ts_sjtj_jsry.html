@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head runat="server">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="/SXSY/layuiadmin/layui/css/layui.css" />
+		<link rel="stylesheet" href="/SXSY/layuiadmin/style/admin.css">
+		<link rel="stylesheet" href="/SXSY/Widget/yanzheng/css/verify.css" />
+		<script src="/SXSY/js/jquery-1.11.3.min.js"></script>
+		<script src="/SXSY/layuiadmin/layui/layui.js"></script>
+		<script src="/SXSY/Widget/yanzheng/js/verify.js"></script>
+		<script src="/SXSY/js/SysCongfig.js"></script>
+		<script src="/SXSY/widget/echarts/echarts.js"></script>
+		<script src="../../js/sjtj/ts_sjtj_jsry.js"></script>
+	</head>
+	<style type="text/css">
+		.chart-icon {
+			width: 32px;
+			height: 32px;
+		}
+	</style>
+
+	<body>
+		<form class="layui-form">
+			<div class="layui-fluid">
+				<div class="layui-row layui-col-space15">
+					<div class="layui-col-md12">
+						<div class="layui-row layui-col-space15">
+							<div class="layui-col-md12">
+								<div class="layui-card">
+									<div class="layui-card-header" style="padding: 15px 10px;">
+										<div class="layui-inline ">	
+											<div class="layui-input-inline" style="line-height: 43px;">
+												<img class="chart-icon" src="../../images/chart-icon.png" alt="" />
+											</div>
+											<div class="layui-input-inline">
+												<input type="text" id="calendarLib" style="width: 350px;" class="layui-input" placeholder="请选择时间">
+											</div>
+										</div>
+										<div class="layui-inline">
+											<label class="layui-form-label">出版社：</label>
+											<div class="layui-input-inline" style="width: 58%;">
+												<select id="queryT" lay-filter="queryT"></select>
+											</div>
+										</div>
+										<div class="layui-inline">
+											<label class="layui-form-label">图书类型：</label>
+												<div class="layui-input-inline" style="width: 58%;">
+													<select id="queryK" lay-filter="queryK"></select>
+												</div>
+		
+										</div>
+									</div>
+									<div class="layui-card-body">
+										<div class="layui-block  " id="statusBtn" style="text-align: center;">
+
+											<div class="layui-inline ">
+												<input type="radio" name="status" value="已提交" title="新申请" checked="" lay-filter="statusRadio">
+												<input type="radio" name="status" value="审批拒绝" title="拒绝借出" lay-filter="statusRadio">
+												<input type="radio" name="status" value="审核后借出" title="已借出" lay-filter="statusRadio">
+												<input type="radio" name="status" value="借阅延期" title="借阅延期" lay-filter="statusRadio">
+												<input type="radio" name="status" value="借阅归还" title="借阅归还" lay-filter="statusRadio">
+											</div>
+										</div>
+										<div id="chart1" style="width: 98%;min-height: 500px;">
+
+										</div>
+										<div class="nothing layui-hide" style="line-height: 500px;text-align: center;"><img src="../../images/nothing.png" alt="" /></div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</form>
+	</body>
+
+</html>

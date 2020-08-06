@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>库容查看</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <link href="/SXSY/layuiadmin/layui/css/layui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/SXSY/layuiadmin/style/admin.css" media="all">
+    <link href="/SXSY/Widget/yanzheng/css/verify.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="../../../lib/css/font-awesome/css/font-awesome.css" /> -->
+    <link rel="stylesheet" href="../../css/kfgl/ts_kfgl_krck.css" />
+
+</head>
+
+<body>
+    <div id="relicPosition" class="relic-position layui-hide">
+        <div class="close-btn" id="closeBtn"></div>
+        <div class="tip-box" id="tipBox"></div>
+    </div>
+    <div class="layui-fluid">
+        <div class="layui-card">
+            <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+                <div class="layui-row">
+                    <div class=" layui-col-md6">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">请选择颜色</label>
+                            <div class="layui-input-inline choose-color">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">空</label>
+                                    <div class="layui-input-inline" id="color0"></div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">小于50%</label>
+                                    <div class="layui-input-inline" id="color1"></div>
+
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">50%~70%</label>
+                                    <div class="layui-input-inline" id="color2"></div>
+
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">大于70%</label>
+                                    <div class="layui-input-inline" id="color3"></div>
+                                </div>
+                                <div class="layui-btn-group" style="margin-left: 25px;">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" layui-col-md6" style="text-align: right;">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">过道位置</label>
+                            <div class="layui-input-inline" style="width:50px">
+                                <input type="text" class="layui-input" id="aisle" value="2" />
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">每行柜架数</label>
+                            <div class="layui-input-inline" style="width:50px">
+                                <input type="text" class="layui-input" id="columnNum" value="2" />
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <button class="layui-btn own-btn-red layui-hide" id="sure">确定</button>
+                        </div>
+                        <div class="layui-inline">
+                            <button class="layui-btn own-btn-orange layui-hide" id="sureColor">默认颜色</button>
+                        </div>
+                        <div class="layui-inline">
+                            <button class="layui-btn own-btn-blue" id="inspect">库容检查</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="layui-card-body" style="min-height: 600px;">
+                <div class="view" id="view" style='overflow: hidden;'>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script id="tpldemo" type="text/html">
+
+    {{# layui.each(d.data, function(index, item){ }} {{# if(setGuoDao(d,index)){}}
+    <div class="module-store" style="width: 5%;padding:55px 0px;text-align: center;font-weight: 600;">
+        <div class="gd-div">
+            <p>过</p>
+            <p>道</p>
+        </div>
+        <div class="gd-div">
+            <p>过</p>
+            <p>道</p>
+        </div>
+    </div>
+    {{#}}}
+    <div class="module-store" style="{{setWidth(d)}}">
+        <p class="storeTitle">{{item['柜架号']}}</p>
+        <div class="content-top">
+            <div class="store-border-top"></div>
+        </div>
+        <div class="content-md">
+            <div class="store-border-left"></div>
+            <div class="store-content-mid">
+                <!--层-->
+                {{# layui.each(item['分层集合'], function(indexs, items){ }} {{#if((indexs*1+1)==item['分层集合'].length){}}
+                <div class="store-level ">
+                    {{#}else {}}
+                    <div class="store-level store-level-botborder">
+                        {{#}}} {{# if(items['分区集合'].length>0){}} {{# layui.each(items['分区集合'], function(indexss, itemss){ }} {{# if(itemss['现容量']||itemss['现容量']=="0"){}} {{#if((indexss*1+1)==items['分区集合'].length){}}
+                        <div class="store-grid " style="width:{{getGridWidth(items['分区集合'].length)}}">
+                            {{#}else{}}
+                            <div class="store-grid store-grid-border" style="width:{{getGridWidth(items['分区集合'].length)}}">
+                                {{#}}}
+                                <a href="javascript:;" title="{{item['柜架号']}}-{{items['层号']}}-{{itemss['分区号']}}">
+                                    <div class="store-level-content store-fix-div" values="{{itemss['现容量']}}" CNTR_no="{{index}}" Level_no="{{indexs}}" area_no="{{indexss}}">
+                                        <div class="volume" style="background-color:{{setKrColor(itemss)}};">
+                                            <p>{{itemss['现容量']}}</p>
+                                            <!--<p>量</p>-->
+                                        </div>
+                                        <div class="storeNumber"><span>{{itemss['现容量']}}</span></div>
+                                        <!--<ul>
+												{{# if(itemss['现容量']>0){}}
+												
+														{{#if(indexs%2==0){}}
+												<li>
+													<div class="book"><img src="../../../images/book02.png" alt="" /></div>
+												</li>
+
+												{{#}}} {{#if(indexs%2==0){}}
+												<li>
+													<div class="book"><img src="../../../images/book03.png" alt="" /></div>
+												</li>
+
+												{{#}}} {{#if(d.columnNum
+												<=4){}} <li>
+													<div class="book"><img src="../../../images/book01.png" alt="" /></div>
+													</li>
+													{{#}else if(d.columnNum
+													<7){}} <li>
+														<div class="book"><img src="../../../images/book03.png" alt="" /></div>
+														</li>
+
+														{{#}}}
+												
+												{{#}}}
+										
+
+											</ul>-->
+
+                                    </div>
+                                </a>
+                            </div>
+                            {{# }}} {{# }); }} {{#}else{}}
+                            <div class="store-grid " style="width:100%">
+                                <a href="javascript:;" title="{{item['柜架号']}}-{{items['层号']}}">
+                                    <div class="store-level-content store-fix-div" CNTR_no="{{index}}" Level_no="{{indexs}}">
+
+                                    </div>
+                                </a>
+                            </div>
+
+                            {{#}}}
+
+                        </div>
+                        {{# }); }}
+
+                    </div>
+                    <div class="store-border-right"></div>
+                </div>
+                <div class="content-bottom">
+
+                </div>
+            </div>
+            {{# }); }}
+
+</script>
+
+<script id="tpldemo2" type="text/html">
+    {{# layui.each(d.data, function(index, item){ }} {{# if(setGuoDao(d,index)){}}
+    <div class="module-store" style="width: 10%;padding:55px 0px;text-align: center;font-weight: 600;">
+        <p>过</p>
+        <p>道</p>
+    </div>
+    {{#}}}
+    <div class="module-store" style="width: {{setWidth(d)}};">
+        <div class="content-top">
+            <div class="store-border-top"></div>
+        </div>
+        <div class="content-md">
+            <div class="store-border-left"></div>
+            <div class="store-content-mid">
+                <!--层-->
+                {{# layui.each(item['分层集合'], function(indexs, items){ }} {{#if((indexs*1+1)==item['分层集合'].length){}}
+                <div class="store-level ">
+                    {{#}else {}}
+                    <div class="store-level store-level-botborder">
+                        {{#}}} {{# layui.each(items['分区集合'], function(indexss, itemss){ }} {{# if(itemss['现容量']||itemss['现容量']=="0"){}} {{#if((indexss*1+1)==items['分区集合'].length){}}
+                        <div class="store-grid " style="background-color:{{setKrColor(itemss)}};">
+                            {{#}else{}}
+                            <div class="store-grid store-grid-border" style="background-color:{{setKrColor(itemss)}};">
+                                {{#}}}
+                                <div class="store-mark" CNTR_no="{{itemss['柜架号']}}" Level_no="{{itemss['层号']}}" area_no="{{itemss['分区号']}}">
+                                    <span>{{itemss['分区号']}}</span>
+                                    <span>现容量:{{itemss['现容量']}}</span>
+                                    <span>最大容量:{{itemss['最大容量']}}</span>
+                                    <span class="detail-tip">详情</span>
+                                </div>
+                                <div class="store-fix-div" CNTR_no="{{itemss['柜架号']}}" Level_no="{{itemss['层号']}}" area_no="{{itemss['分区号']}}">
+                                    <ul>
+
+                                        <!--{{# layui.each(itemss['库内物品集合'], function(indexsss, itemsss){ }}
+											<li></li>
+											{{#})}}-->
+                                        <!--{{#for(var i=0;i
+											<itemss[ '最大容量'];i++){}} {{#if(i<itemss[ '现容量']){}} <li class="good-color">
+												</li>
+												{{#}else{}}
+												<li></li>
+												{{#}}} {{#}}}-->
+                                    </ul>
+                                </div>
+                            </div>
+                            {{# }}} {{# }); }}
+                        </div>
+                        {{# }); }}
+                    </div>
+                    <div class="store-border-right"></div>
+                </div>
+                <div class="content-bottom">
+                    <p>{{item['柜架号']}}</p>
+                </div>
+            </div>
+            {{# }); }}
+</script>
+
+</html>
+<script src="/SXSY/layuiadmin/layui/layui.js"></script>
+<script src="/SXSY/js/jquery-1.11.3.min.js"></script>
+<script src="/SXSY/Widget/yanzheng/js/verify.js"></script>
+<script src="/SXSY/js/SysCongfig.js"></script>
+<script type="text/javascript " src="../../js/kfgl/ts_kfgl_krck.js"></script>

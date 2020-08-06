@@ -1,0 +1,216 @@
+html body {
+    background-color: #FFFFFF;
+    height: 100%;
+}
+
+.module-store {
+    /*float: left;*/
+    padding: 20px 40px;
+    box-sizing: border-box;
+}
+
+.store-border-top {
+    padding: 3px 10px;
+    box-sizing: border-box;
+    background-color: #b1b1b1;
+}
+
+.content-bottom {
+    height: 12px;
+    box-sizing: border-box;
+    background-color: #accad2;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.content-md {
+    padding: 0px 22px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.store-border-left,
+.store-border-right {
+    padding: 0px 3px;
+    display: inline-block;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: #b1b1b1;
+}
+
+.store-border-left {
+    position: absolute;
+    top: 0px;
+    left: 16px;
+}
+
+.store-border-right {
+    position: absolute;
+    top: 0px;
+    right: 16px;
+}
+
+.store-content-mid {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.store-level {
+    height: 70px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.store-level-content {
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF;
+    position: relative;
+}
+
+.store-level-botborder {
+    position: relative;
+}
+
+.store-level-botborder::after {
+    width: 100%;
+    height: 6px;
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: 100;
+    background-color: #accad2;
+}
+
+.store-grid {
+    float: left;
+    width: 33.33%;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+    padding-top: 12px;
+    padding-left: 12px;
+    background-color: #f0f0f0;
+}
+
+.store-grid-border {
+    padding-right: 6px;
+}
+
+.store-grid-border::after {
+    width: 6px;
+    height: 100%;
+    content: "";
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    z-index: 100;
+    background-color: #b1b1b1;
+}
+
+.store-level-content ul {
+    list-style: none;
+    width: 100%;
+}
+
+.store-level-content ul li {
+    width: 8px;
+    height: 53px;
+    /*border-radius: 4px;*/
+    /*background-color: pink;*/
+    float: left;
+    margin: 0px 2px;
+    /*border: 1px solid #b1b1b1;*/
+    box-sizing: border-box;
+}
+
+.store-level-content ul li img {
+    width: 100%;
+    transform: rotate(180deg);
+}
+
+.good-color {
+    background-color: pink;
+}
+
+.store-level-content {
+    height: 100%;
+    transform: rotate(180deg);
+}
+
+.storeTitle {
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    color: #333333;
+    font-family: "微软雅黑";
+}
+
+.good-num {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 16px;
+    font-style: normal;
+    color: #333333;
+    z-index: 1000;
+    transform: rotate(-180deg);
+}
+
+.volume {
+    position: absolute;
+    bottom: 3px;
+    right: -13px;
+    width: 20px;
+    height: 25px;
+    border-radius: 0px 4px 4px 0px;
+    border-right: none;
+    font-size: 12px;
+    text-align: center;
+    color: #FFFFFF;
+    transform: rotate(-180deg);
+}
+
+.layui-card-header .layui-icon {
+    right: 14px!important;
+    top: 39%!important;
+}
+
+.gd-div {
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+
+/*.store-grid a {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    position:relative;} 
+.store-grid a:hover::before {
+    position:absolute;
+    top:20px;
+    right:0;
+    content:attr(title);
+    color:#000000;
+    border:1px solid #242424;
+    background-color:#E5E5E5;
+    }*/
+
+.view {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.storeNumber {
+    width: 100%;
+    height: 100%;
+    line-height: 60px;
+    text-align: center;
+    transform: rotate(-180deg);
+}

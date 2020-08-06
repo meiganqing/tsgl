@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>pdf预览</title>
+<script type="text/javascript" src="js/pdfobject.js"></script>
+<script src="/js/jquery-1.11.3.min.js"></script>
+<script src="/SysJS/xdDataMange.js"></script>
+<script type="text/javascript">
+      window.onload = function (){
+
+        var myPDF = new PDFObject({ url: window.location.href.getQuery("path") }).embed();
+
+      };
+    </script>
+</head>
+<body>
+<p>It appears you don't have Adobe Reader or PDF support in this web
+     
+     browser. <a href="sample.pdf">Click here to download the PDF</a></p>
+</body>
+</html>

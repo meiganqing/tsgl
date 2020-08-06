@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>jquery.iviewer test</title>
+		<script type="text/javascript" src="jquery.js"></script>
+		<!--<script type="text/javascript" src="viewer/jquery-3.3.1.min.js"></script>-->
+		<!--iviewer插件start-->
+		<link rel="stylesheet" href="jquery.iviewer.css" />
+		<script type="text/javascript" src="jqueryui.js"></script>
+		<script type="text/javascript" src="jquery.mousewheel.min.js"></script>
+		<script type="text/javascript" src="jquery.iviewer.js"></script>
+		<!--iviewer插件end-->
+
+		<!--viewier插件start-->
+		<link rel="stylesheet" href="viewer/css/viewer.min.css" />
+		<script type="text/javascript" src="viewer/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="viewer/viewer.js"></script>
+		<script type="text/javascript" src="viewer/jquery-viewer.js"></script>
+		<!--viewier插件end-->
+		<style>
+			html,body,.wrapper,.viewer{
+				height: 100%;
+			}
+			.viewer {
+				width: 50%;
+				/*border: 1px solid black;*/
+				position: relative;
+			}
+			
+			.wrapper {
+				overflow: hidden;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- wrapper div is needed for opera because it shows scroll bars for reason -->
+		<div class="wrapper">
+			<div id="viewer2" class="viewer" style="width:98%;margin:0 auto;"></div>
+		</div>		
+	</body>
+
+</html>
+<script type="text/javascript">
+	var scanPictureType = "02" //01是iviewer插件  02是viewier插件，该插件可以拖拽，最大最小缩放1%~200%
+	var $ = jQuery;
+	String.prototype.getQuery = function(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+		var r = this.substr(this.indexOf("?") + 1).match(reg);
+		if(r != null) return unescape(r[2]);
+		return null;
+	}
+	var imgUrl=unescape(window.location.href.getQuery("path"))
+	$(function() {
+//			$('.viewer')[0].style.height = $(window).height() - 20 + 'px';
+		if(scanPictureType=="01"){
+			console.log("8888")
+				var iv2 = $("#viewer2").iviewer({
+			src: '' +imgUrl + ''
+		});
+		}else if (scanPictureType=="02"){
+			$("#viewer2").append('<img  id="viewerImg" src="'+imgUrl+'" style="display:none;" />');
+			//为新添加的元素添加一个click事件
+			var viewer = new Viewer(document.getElementById('viewer2'), {
+				//重新装载一次，在之后添加的图片也可以使用
+				//显示的时候 重新装载viewer
+					show: function (){
+						viewer.update();
+				  		},
+				//点击关闭按钮，将viewer销毁
+				 	hiden: function() {
+						viewer.destroy();
+					 },
+					  backdrop:false,
+					 button:false
+			  	} 
+			  );
+			$("#viewerImg").trigger("click");
+		}
+	
+		
+		
+		
+		
+	})
+</script>

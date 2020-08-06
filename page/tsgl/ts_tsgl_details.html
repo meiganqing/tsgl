@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>详情</title>
+    <link rel="stylesheet" href="/SXSY/layuiadmin/layui/css/layui.css" />
+    <link rel="stylesheet" href="/SXSY/layuiadmin/style/admin.css">
+    <link rel="stylesheet" href="/SXSY/Widget/yanzheng/css/verify.css" />
+    <script src="/SXSY/js/jquery-1.11.3.min.js"></script>
+    <script src="/SXSY/layuiadmin/layui/layui.js"></script>
+    <script src="/SXSY/Widget/yanzheng/js/verify.js"></script>
+    <script src="/SXSY/js/SysCongfig.js"></script>
+    <script src="../../js/tsgl/ts_tsgl_details.js"></script>
+    <style type="text/css">
+        body,
+        html {
+            background: #FFFFFF;
+        }
+        
+        td {
+            width: 200px;
+            text-align: center;
+        }
+        
+        tr {
+            height: 30px;
+        }
+        
+        .imgDiv {
+            padding: 15px;
+            box-sizing: border-box;
+        }
+        
+        table,
+        table tr th,
+        table tr td {
+            border: 1px solid #e6e6e6;
+            border-collapse: collapse;
+            /*padding: 12px 5px;*/
+        }
+        
+        table tr td {
+            height: 42px;
+            box-sizing: border-box;
+            padding-left: 2px;
+        }
+        
+        #recordList img {
+            max-width: 60px;
+            max-height: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layui-fluid" style="padding: 20px 40px;">
+        <form class="layui-form  site-text">
+
+            <div class="layui-row">
+
+                <div class="layui-col-md12">
+                    <div class=" ">
+                        <!--文物入库信息-->
+
+                        <div>
+                            <div style="padding: 20px 0px;">
+                                <blockquote class="layui-elem-quote layui-text">
+                                    图书基础信息表
+                                </blockquote>
+                            </div>
+                            <div id="print">
+                                <button class="layui-btn layui-hide" style="float: right;" type="button" id="dzsxz">下载电子书</button>
+                                <table class="" id="" style="width: 100%;">
+
+                                    <tr>
+                                        <td>登记名称 </td>
+                                        <td id="登记名称">
+                                        </td>
+                                        <td>编号</td>
+                                        <td id="编号"></td>
+                                        <td rowspan="5" align="center">
+                                            <div class="layui-card-body" id="picBody" style="overflow: hidden;text-align: center;">
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>图书名称 </td>
+                                        <td id="标题">
+                                        </td>
+                                        <td>副标题</td>
+                                        <td id="副标题"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>丛书 </td>
+                                        <td id="丛书">
+                                        </td>
+                                        <td>类型 </td>
+                                        <td id="类型">
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>作者 </td>
+                                        <td id="作者">
+                                        </td>
+                                        <td>出版社</td>
+                                        <td id="出版社"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>出品方 </td>
+                                        <td id="出品方">
+                                        </td>
+                                        <td>译者</td>
+                                        <td id="译者"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>出版时间 </td>
+                                        <td id="出版时间">
+                                        </td>
+                                        <td>印刷时间</td>
+                                        <td id="印刷时间" colspan="2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>版次 </td>
+                                        <td id="版次">
+                                        </td>
+                                        <td>印次</td>
+                                        <td id="印次" colspan="2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>ISBN </td>
+                                        <td id="ISBN">
+                                        </td>
+                                        <td>语种</td>
+                                        <td id="语种" colspan="2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>字数 </td>
+                                        <td id="字数">
+                                        </td>
+                                        <td>页数</td>
+                                        <td id="页数" colspan="2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>尺寸 </td>
+                                        <td id="尺寸">
+                                        </td>
+                                        <td>重量</td>
+                                        <td id="重量" colspan="2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>价格 </td>
+                                        <td id="价格">
+                                        </td>
+                                        <td>装帧</td>
+                                        <td id="装帧" colspan="2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>库存数量</td>
+                                        <td id="库存数量"></td>
+                                        <td>图书总数</td>
+                                        <td id="图书总数" colspan="2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>借阅中数量 </td>
+                                        <td id="借出数量">
+                                        </td>
+                                        <td>注销数量</td>
+                                        <td id="注销数量" colspan="2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>可借数量 </td>
+                                        <td id="库房数量">
+                                        </td>
+
+                                        <td>借出次数</td>
+                                        <td id="借出次数" colspan="2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>目录 </td>
+                                        <td id="目录" colspan="4">
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>内容简介 </td>
+                                        <td id="内容简介" colspan="4">
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>作者简介 </td>
+                                        <td id="作者简介" colspan="4">
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>备注 </td>
+                                        <td id="备注" colspan="4">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>关键字 </td>
+                                        <td id="关键字" colspan="4">
+                                        </td>
+
+                                    </tr>
+                                </table>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

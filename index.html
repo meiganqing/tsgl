@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>图书管理系统</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/SXSY/layuiadmin/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="/SXSY/layuiadmin/style/admin.css" media="all" />
+    <!-- <link rel="stylesheet" href="./plugins/font-awesome/css/font-awesome.min.css" media="all"> -->
+</head>
+
+<style type="text/css">
+    .item-nav a i {
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        position: absolute;
+        top: 70%;
+        left: 20px;
+        margin-top: -19px;
+    }
+    
+    .me-icon1 i {
+        background-image: url(images/ico_02.png);
+        background-size: cover;
+    }
+    
+    .me-icon2 i {
+        background-image: url(images/icon_03.png);
+        background-size: cover;
+    }
+    
+    .me-icon3 i {
+        background-image: url(images/icon_06.png);
+        background-size: cover;
+    }
+    
+    .me-icon4 i {
+        background-image: url(images/icon_05.png);
+        background-size: cover;
+    }
+    
+    .me-icon5 i {
+        background-image: url(images/icon_07.png);
+        background-size: cover;
+    }
+    
+    .me-icon6 i {
+        background-image: url(images/icon_04.png);
+        background-size: cover;
+    }
+    
+    .me-icon7 i {
+        background-image: url(images/all-store.png);
+        background-size: cover;
+    }
+    
+    .layui-layout-admin .layui-footer {
+        position: fixed;
+        left: 200px;
+        right: 0;
+        bottom: 0;
+        height: 44px;
+        line-height: 44px;
+        padding: 0 15px 0px 30px;
+        background-color: #eee;
+        height: 35px;
+        line-height: 35px;
+        z-index: 1000;
+        box-sizing: border-box;
+    }
+    
+    .comp-logo {
+        position: absolute;
+        left: 20px;
+        bottom: 0px;
+    }
+    
+    .layui-side-scroll .layui-nav .layui-nav-item a {
+        color: #FFFFFF !important;
+    }
+    
+    .layui-side-menu {
+        margin-top: 73px;
+        box-sizing: border-box;
+    }
+    
+    .layui-header {
+        background-image: url(./images/bg-header.png);
+        height: 74px !important;
+        display: flex;
+        line-height: 74px;
+    }
+    
+    .header-img {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 600px;
+        height: 100%;
+        vertical-align: middle;
+        line-height: 74px;
+        padding-left: 15px;
+    }
+    
+    .fullscreen {
+        top: 0px;
+        right: 80px;
+    }
+    
+    .refresh {
+        top: 0px;
+        right: 120px;
+    }
+    
+    .word-white {
+        color: #FFFFFF;
+    }
+    
+    .layui-layout-admin .layui-header .layui-nav .layui-nav-more {
+        color: #FFFFFF !important;
+    }
+    
+    .list-flexible {
+        height: 40px;
+        line-height: 40px;
+        color: #FFFFFF;
+        text-align: center;
+        background-color: #0277a2;
+    }
+    
+    .layadmin-side-shrink .layui-layout-admin .list-flexible {
+        width: 60px;
+    }
+    
+    .banben {
+        color: #FFFFFF;
+        position: absolute;
+        top: 12px;
+        left: 340px;
+    }
+    
+    .logoImg1 {
+        margin-right: 13px;
+    }
+    
+    .logoImg2 {}
+    
+    .layadmin-flexible {
+        display: flex;
+        align-items: center;
+        padding-left: 46px;
+    }
+    
+    .layui-nav-bar {
+        display: none;
+    }
+    
+    .layui-nav {
+        padding: 0;
+    }
+    
+    .layui-layer-min,
+    .layui-layer-max {
+        display: none !important;
+    }
+</style>
+
+<body class="layui-layout-body">
+    <div id="LAY_app">
+        <div class="layui-layout layui-layout-admin">
+            <div class="layui-header">
+                <ul class="layui-nav">
+                    <li class="layui-nav-item layadmin-flexible" lay-unselect>
+                        <img class="logoImg1" id="logo" src="" alt="">
+                        <img class="logoImg2" src="./images/logo_img_9.png" alt="">
+                    </li>
+                </ul>
+                <ul class="layui-nav layui-layout-right" lay-filter="layadmin-layout-right" style="height: 100%;line-height: 74px;">
+
+                    <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                        <a href="javascript:;">
+                            <img src="./images/storage.png" alt="" style="margin-right: 5px;" />
+                            <span class="word-white" id="currentStore">选择库房</span>
+                        </a>
+                    </li>
+                    <li class="layui-nav-item" lay-unselect style="margin-right: 40px;">
+
+                        <a href="javascript:;">
+
+                            <img src="./images/user.png" alt="" style="margin-right: 5px;" />
+
+                            <span class="word-white" id="userName" style="margin-right: 5px;"></span>
+                        </a>
+                        <dl class="layui-nav-child" id="xitong" style="overflow: auto;">
+
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+            <!-- 侧边菜单 -->
+            <div class="layui-side layui-side-menu">
+                <div class="layui-side-scroll" style="background-image:url(./images/left-bg.png);">
+
+                    <div class="list-flexible">
+                        <a href="javascript:;" layadmin-event="flexible" title="侧边伸缩">
+                            <i style="color: #FFFFFF;" class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i>
+                        </a>
+                        </a>
+                    </div>
+                    <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu" style="margin: 0;">
+                        <li class="layui-nav-item  layui-nav-itemed item-nav layui-hide">
+                            <a href="javascript:;" class="me-icon1">
+                                <i></i>
+                                <cite>图书申请</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <dd id="图书查找" class="layui-hide">
+                                    <a href="javascript:;" data-icon="fa-tasks" kit-target data-id='01' lay-href="./page/tssq/ts_tssq_tscz.html"> <i class="fa fa-tasks"></i>
+                                        <span>图书查找</span> </a>
+                                </dd>
+                                <dd id="借阅记录" class="layui-hide">
+                                    <a href="javascript:;" data-icon="fa-tasks" kit-target data-id='02' lay-href="./Page/tssq/ts_tssq_jyjl.html"> <i class="fa fa-tasks"></i>
+                                        <span>借阅记录</span> </a>
+                                </dd>
+                                <dd id="待我审批" class="layui-hide">
+                                    <a href="javascript:;" data-icon="fa-tasks" kit-target data-id='03' lay-href="./Page/tssq/ts_tssq_dwsp.html"> <i class="fa fa-tasks"></i>
+                                        <span>待我审批</span> </a>
+                                </dd>
+                                <dd id="借阅延期" class="layui-hide">
+                                    <a href="javascript:;" data-icon="fa-tasks" kit-target data-id='04' lay-href="./Page/tssq/ts_tssq_jyyq.html"> <i class="fa fa-tasks"></i>
+                                        <span>借阅延期</span> </a>
+                                </dd>
+                                <dd id="归还图书" class="layui-hide">
+                                    <a href="javascript:;" data-icon="fa-tasks" kit-target data-id='05' lay-href="./Page/tssq/ts_tssq_ghts.html"> <i class="fa fa-tasks"></i>
+                                        <span>归还图书</span> </a>
+                                </dd>
+                                <dd id="拒绝借出" class="layui-hide">
+                                    <a href="javascript:;" data-icon="fa-tasks" kit-target data-id='06' lay-href="./Page/tssq/ts_tssq_jjjc.html"> <i class="fa fa-tasks"></i>
+                                        <span>拒绝借出</span> </a>
+                                </dd>
+                                <dd id="已归还图书" class="layui-hide">
+                                    <a href="javascript:;" data-icon="fa-tasks" kit-target data-id='07' lay-href="./Page/tssq/ts_tssq_yghts.html"> <i class="fa fa-tasks"></i>
+                                        <span>已归还图书</span> </a>
+                                </dd>
+
+                            </dl>
+                        </li>
+                        <li class="layui-nav-item item-nav layui-hide">
+                            <a href="javascript:;" class="me-icon2">
+                                <i></i>
+                                <cite>图书管理</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <dd id="图书列表" class="layui-hide">
+                                    <a href="javascript:;" data-icon="fa-tasks" kit-target data-id='101' lay-href="./Page/tsgl/ts_tsgl_list.html"> <i class="fa fa-tasks"></i>
+                                        <span>图书列表</span> </a>
+                                </dd>
+
+                                <dd id="图片列表展示" class="layui-hide">
+                                    <a href="javascript:;" lay-href="./Page/tsgl/ts_tsgl_tplist.html" data-icon="fa-tasks" kit-target data-id='107'> <i class="fa fa-tasks"></i>
+                                        <span>图片列表展示</span> </a>
+                                </dd>
+
+                            </dl>
+                        </li>
+
+                        <li class="layui-nav-item item-nav layui-hide">
+                            <a href="javascript:;" class="me-icon3 ">
+                                <i></i>
+                                <cite>数据统计</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <dd id="借书人员统计" class="layui-hide">
+                                    <a href="javascript:;" data-icon="fa-tasks" kit-target data-id='206' lay-href="./Page/sjtj/ts_sjtj_jsry.html?type=01"> <i class="fa fa-tasks"></i>
+                                        <span>借书人员统计</span> </a>
+                                </dd>
+                                <dd id="图书借阅次数统计" class="layui-hide">
+                                    <a href="javascript:;" data-icon="fa-tasks" kit-target data-id='207' lay-href="./Page/sjtj/ts_sjtj_jsry.html?type=02"> <i class="fa fa-tasks"></i>
+                                        <span>图书借阅次数统计</span> </a>
+                                </dd>
+                                <dd id="图书借阅状态统计" class="layui-hide">
+                                    <a href="javascript:;" data-icon="fa-tasks" kit-target data-id='206' lay-href="./Page/sjtj/ts_sjtj_tsjyzt.html?type=01"> <i class="fa fa-tasks"></i>
+                                        <span>图书借阅状态统计</span> </a>
+                                </dd>
+                                <dd id="借阅人借书状态统计" class="layui-hide">
+                                    <a href="javascript:;" data-icon="fa-tasks" kit-target data-id='207' lay-href="./Page/sjtj/ts_sjtj_tsjyzt.html?type=02"> <i class="fa fa-tasks"></i>
+                                        <span>借阅人借书状态统计</span> </a>
+                                </dd>
+                            </dl>
+                        </li>
+                        <li class="layui-nav-item item-nav layui-hide">
+                            <a href="javascript:;" class="me-icon4">
+                                <i></i>
+                                <cite>库房管理</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <dd id="库房设置" class="layui-hide">
+                                    <a href="javascript:;" data-icon="fa-tasks" kit-target data-id='301' lay-href="./Page/kfgl/ts_kfgl_kfsz.html"> <i class="fa fa-tasks"></i>
+                                        <span>库房设置</span> </a>
+                                </dd>
+                                <dd id="库容查看" class="layui-hide">
+                                    <a href="javascript:;" data-icon="fa-tasks" kit-target data-id='302' lay-href="./Page/kfgl/ts_kfgl_krck.html"> <i class="fa fa-tasks"></i>
+                                        <span>库容查看</span> </a>
+                                </dd>
+                            </dl>
+                        </li>
+                        <li class="layui-nav-item item-nav layui-hide">
+                            <a href="javascript:;" class="me-icon5">
+                                <i></i>
+                                <cite>系统管理</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <dd id="图书属性管理" class="layui-hide">
+                                    <a href="javascript:;" data-icon="fa-tasks" kit-target data-id='402' lay-href="./Page/xtgl/ts_xtgl_tssxgl.html"> <i class="fa fa-tasks"></i>
+                                        <span>图书属性管理</span> </a>
+                                </dd>
+                                <dd id="系统日志" class="layui-hide">
+                                    <a href="javascript:;" lay-href="./Page/xtgl/ts_xtgl_xtrz.html" data-icon="fa-tasks" kit-target data-id='403'> <i class="fa fa-tasks"></i> <span>系统日志</span> </a>
+                                </dd>
+                                <!-- <dd id="系统设置" class="layui-hide">
+                                    <a href="javascript:;" lay-href="./Page/xtgl/ts_xtgl_xtsz.html" data-icon="fa-tasks"
+                                        kit-target data-id='405'> <i class="fa fa-tasks"></i> <span>系统设置</span> </a>
+                                </dd> -->
+                                <dd id="系统配置" class="layui-hide">
+                                    <a href="javascript:;" lay-href="./Page/xtgl/ts_xtgl_xtsz.html" data-icon="fa-tasks" kit-target data-id='406'> <i class="fa fa-tasks"></i> <span>系统配置</span> </a>
+                                </dd>
+                            </dl>
+                        </li>
+                    </ul>
+                    <div class="comp-logo">
+                        <img src="images/logo.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- 页面标签 -->
+            <div class="layadmin-pagetabs" id="LAY_app_tabs" style="margin-top:23px;">
+                <div class="layui-icon layadmin-tabs-control layui-icon-prev" layadmin-event="leftPage"></div>
+                <div class="layui-icon layadmin-tabs-control layui-icon-next" layadmin-event="rightPage"></div>
+                <div class="layui-icon layadmin-tabs-control refresh">
+                    <a href="javascript:;" layadmin-event="refresh" title="刷新">
+                        <i class="layui-icon layui-icon-refresh-3"></i>
+                    </a>
+                </div>
+                <div class="layui-icon layadmin-tabs-control fullscreen">
+                    <a href="javascript:;" layadmin-event="fullscreen">
+                        <i class="layui-icon layui-icon-screen-full"></i>
+                    </a>
+                </div>
+                <div class="layui-icon layadmin-tabs-control layui-icon-down">
+                    <ul class="layui-nav layadmin-tabs-select" lay-filter="layadmin-pagetabs-nav">
+                        <li class="layui-nav-item" lay-unselect>
+                            <a href="javascript:;"></a>
+                            <dl class="layui-nav-child layui-anim-fadein">
+                                <dd layadmin-event="closeThisTabs">
+                                    <a href="javascript:;">关闭当前标签页</a>
+                                </dd>
+                                <dd layadmin-event="closeOtherTabs">
+                                    <a href="javascript:;">关闭其它标签页</a>
+                                </dd>
+                                <dd layadmin-event="closeAllTabs">
+                                    <a href="javascript:;">关闭全部标签页</a>
+                                </dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+                <div class="layui-tab" lay-unauto lay-allowClose="true" lay-filter="layadmin-layout-tabs">
+                    <ul class="layui-tab-title" id="LAY_app_tabsheader">
+
+                        <li lay-id="./main.html" lay-attr="./main.html" class="layui-this"><i class="layui-icon layui-icon-home"></i></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 主体内容 -->
+            <div class="layui-body" id="LAY_app_body" style="margin-bottom:35px;margin-top:22px;">
+                <div class="layadmin-tabsbody-item layui-show">
+                    <iframe src="./main.html" frameborder="0" class="layadmin-iframe"></iframe>
+                </div>
+            </div>
+
+            <!-- 辅助元素，一般用于移动设备下遮罩 -->
+            <div class="layadmin-body-shade" layadmin-event="shade"></div>
+            <div class="layui-footer">
+                <a href="javascript:;" style="float:left;">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <span id="copyright_name_value"></span>
+                </a>
+                <a href="javascript:;" style="float:right;">
+                    <span id="support_name_value"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script src="/SXSY/layuiadmin/layui/layui.js"></script>
+<script src="/SXSY/js/jquery-1.11.3.min.js"></script>
+<script src="/SXSY/js/SysCongfig.js"></script>
+<script src="./js/index.js"></script>

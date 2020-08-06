@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/SXSY/layuiadmin/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="/SXSY/layuiadmin/style/admin.css" media="all" />
+    <link rel="stylesheet" href="/SXSY/Widget/yanzheng/css/verify.css" />
+</head>
+<style type="text/css">
+    li a {
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+    }
+    
+    .store-icon {
+        display: inline-block;
+        width: 48px;
+        height: 48px;
+        text-align: center;
+        transition: all .3s;
+        -webkit-transition: all .3s;
+        background: url(../../images/store-01.png) no-repeat;
+        position: absolute;
+        top: 26px;
+        left: 20px;
+    }
+    
+    .module {
+        width: 100%;
+        height: 95px;
+        padding-left: 70px;
+        box-sizing: border-box;
+        /*background-color: #F8F8F8;*/
+        background: #f7fdff;
+        position: relative;
+        color: #fff;
+        /*font-weight: 600;*/
+        border-radius: 5px;
+        border: 1px solid #d5e7ec;
+    }
+    
+    .module:hover {
+        /*background: rgba(118,203,227,0.8);*/
+        box-shadow: 3px 3px 2px #eaf0f1;
+    }
+    
+    .store-name {
+        line-height: 35px;
+        font-size: 20px;
+        color: #08617e;
+        font-family: "微软雅黑";
+    }
+    
+    .type-name {
+        line-height: 20px;
+        font-size: 12px;
+        color: #666666;
+        /*font-weight: 100;*/
+    }
+    
+    .module-right {
+        width: 100%;
+        height: 100%;
+        padding: 20px 10px 20px 20px;
+        box-sizing: border-box;
+        text-align: left;
+    }
+    
+    .layadmin-carousel {
+        height: 530px!important;
+    }
+    
+    .kfdel {
+        color: black;
+        position: absolute;
+        top: 4px;
+        right: 10px;
+        cursor: pointer;
+        font-size: 20px;
+        z-index: 5;
+        border-radius: 50%;
+    }
+    
+    .kfedit {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        z-index: 5;
+    }
+</style>
+
+<body>
+    <div class="layui-fluid">
+        <div class="layui-card">
+            <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+                <div class="layui-inline">
+                    <div class="layui-btn-group">
+                        <button class="layui-btn own-btn-blue layui-hide" id="addStore">增加库房</button>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-card-body">
+                <div class="layui-carousel layadmin-carousel layadmin-shortcut" lay-anim="" lay-indicator="inside" lay-arrow="none" style="width: 100%; ">
+                    <div carousel-item="">
+                        <ul class="layui-row layui-col-space10 layui-this" id="storeContent">
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="layui-inline" style="margin-left: 5px;">
+                    <div id="demo0"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!--添加弹框-->
+        <form class="layui-form site-text" id="XMForm" style="display: none;width: 100%;">
+            <div class="layui-card-body layui-row layui-form-item">
+                <input type="hidden" name="XDLM分类" value="图书" class="layui-input">
+                <input type="hidden" id="XDLMID" disabled class="layui-input">
+                <div class="layui-col-md12 layui-inline">
+                    <label class="layui-form-label"><span class="spark">*</span>库房名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="XDLM库房名" id="库房名" required lay-verify="required" placeholder="请输入库房名称" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-col-md12 layui-inline">
+                    <label class="layui-form-label"><span class="spark">*</span>过道位置</label>
+                    <div class="layui-input-block">
+                        <input type="number" name="XDLM过道位置" id="过道位置" value="1" min="1" required lay-verify="required|number" placeholder="请输入过道位置" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-col-md12 layui-inline">
+                    <label class="layui-form-label"><span class="spark">*</span>行柜架数</label>
+                    <div class="layui-input-block">
+                        <input type="number" name="XDLM每行柜架数" id="每行柜架数" value="1" min="1" required lay-verify="required|number" placeholder="请输入行柜架数" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-col-md12 layui-inline">
+                    <label class="layui-form-label"><span class="spark">*</span>库房排序</label>
+                    <div class="layui-input-block">
+                        <input type="number" name="XDLM序号" id="序号" min="1" required lay-verify="required|number" placeholder="请输入行柜架数" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item site-text" style="text-align: center;">
+                <div class="">
+                    <span class="layui-btn own-btn-green" id="addsubmit">添加库房</span>
+                </div>
+            </div>
+        </form>
+</body>
+
+</html>
+<script src="/SXSY/layuiadmin/layui/layui.js"></script>
+<script src="/SXSY/js/jquery-1.11.3.min.js"></script>
+<script src="/SXSY/Widget/yanzheng/js/verify.js"></script>
+<script src="/SXSY/js/SysCongfig.js"></script>
+<script type="text/javascript" src="../../js/kfgl/ts_kfgl_kfsz.js"></script>

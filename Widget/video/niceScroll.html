@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+     <!-- 防止IE8,7进入怪异模式 -->
+    <meta http-equiv="Content-Type" content="IE=Edge,chrome=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>jQuery视频点击切换，滚动条美化代码</title>      
+    <!-- js通用样式 -->
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<!-- js通用样式 -->
+    <script type="text/javascript" src="../../widget/layer/layer.js"></script>
+	<!-- 滚动条主要样式 -->
+	<script type="text/javascript" src="js/jquery.nicescroll.js"></script>
+	<!-- 滚动条主要样式 -->
+	<style type="text/css">
+	/*格式化样式*/
+	body {margin: 0;padding: 0;font-family:Microsoft YaHei!important;background-color: #F5F5F5;}
+	ul,dl,dt,dd,h1,h2,h3,h4,h5,h6,form { padding:0; margin:0;}
+	ul { list-style:none;}
+	img { border:0px;}
+
+	a{text-decoration: none;outline: none;color:#444;}
+	a:visited{text-decoration: none;}
+	a:hover{cursor: pointer;text-decoration: none; color:#3C97D6;}
+	a:focus{-moz-outline-style: none;text-decoration: none;}
+	img{border: 0;}
+	.clear{clear: both;}
+	/*格式化样式*/
+	/*播放器样式*/
+/* 	.video_player{height:393px;} */
+   /*  .video_list_area{width: 100%;}
+    		ul.video_list{margin: 7px 0px 0px 0;height: 107px; list-style:none;border-bottom: 10px solid #dcdcdc;}
+    		ul.video_list li{float: left;font-size: 14px;font-weight: bold;line-height: 24px;}
+    		ul.video_list li a{display:inline-block;padding: 14px 15px;margin-right:7px;width: 140px;height:72px;color: 
+			#fff;background-color: #7e2d2d;}
+    		ul.video_list li.last a{margin-right:0;}
+    		ul.video_list li a:hover,ul.video_list li a.on{color: #fff;background-color: #c12e2e;}
+    		#ascrail2000-hr div{margin-left:0;}
+    	.center{width: 700px;margin: 20px auto;} */
+	/*播放器样式*/
+	</style>
+	<!--- iframe切换停止播放js -->
+	<script type="text/javascript">
+	$(function() {
+		var iframe = $("div.video_player iframe");//播放页面
+		$('ul.video_list li a').click(function(){
+			iframe.attr("src",$(this).attr("name"));//更改iframe src
+			$('ul.video_list li a').removeClass('on');
+			$(this).addClass('on');//给点击的元素添加正在播放标识
+		});
+		
+	});
+    </script>
+    <!-- iframe切换停止播放js -->
+</head>
+<body>
+<div class="center">
+	<!-- 播放器 -->
+	<div class="video_player">
+		<!-- <iframe src="http://player.videoincloud.com/vod/91313" width="700px" height="393px" frameborder="0" 
+		scrolling="No"></iframe> -->
+		<iframe src="" frameborder="0" scrolling="No" id="iframe"></iframe>
+		<!-- "../xdData/DownLoadFile2.ashx?FileName=" + FileName + "&FilePath=" + FilePath -->
+	</div>
+	<!-- <div class="dec_10 clearborder">
+		 <div class="video_list_area">
+		    <ul class="video_list">
+			    <li><a class="on" name="http://player.videoincloud.com/vod/91313">[完整回放]jQuery实现视频切换并停止播放效果预览
+				</a></li>
+	            <li><a name="http://player.videoincloud.com/vod/91780">[美化效果]jQuery实现溢出隐藏带水平滚动条美化预览</a></li>
+			    <li><a name="http://player.videoincloud.com/vod/91456">[精彩片段]jquery带进度条提示的图片淡出淡进切换效果代码
+				</a></li>
+			    <li><a name="http://player.videoincloud.com/vod/91457">[精彩片段]jquery项目步骤进度条效果可控制调节进度条代码
+				</a></li>
+			    <li><a name="http://player.videoincloud.com/vod/91465">[精彩片段]jQuery进度条插件制作多种彩色的动画上传进度条效果
+				</a></li>
+			    <li><a name="http://player.videoincloud.com/vod/91462">[精彩片段]jquery带有Loading进度条的焦点图片切换代码</a></li>
+	            <li><a name="http://player.videoincloud.com/vod/91434">[精彩片段]jquery仿百度安全中心账号检测安全指数进度条代码
+				</a></li>
+	            <li class="last"><a name="http://player.videoincloud.com/vod/91434">[精彩片段]简单的jQuery动态加载进度条特效
+				</a></li>
+	       </ul>
+		</div> 
+	</div>  -->
+	<!-- 播放器 -->
+</div>
+<!-- 美化滚动条js -->
+<script type="text/javascript">
+	var video_list_lenght=$("ul.video_list li").length;
+	$("ul.video_list").css("width",$("ul.video_list li").width()*video_list_lenght-7);// 减去margin-right的7px长度
+	$(".video_list_area").niceScroll({  
+		cursorcolor:" #c12e2e",  //#FF6666滚动条光标颜色
+		cursoropacitymax:1,      //改变不透明度，光标处于活动状态（scrollabar“可见”状态），范围从1到0
+		touchbehavior:false,     //使光标拖动滚动像在台式电脑触摸设备
+		autohidemode:false,      //是否隐藏滚动条
+		cursorwidth:"10px",      //像素光标的宽度
+		cursorborder:"0",        //游标边框css定义
+		cursorborderradius:"0px" //以像素为光标边界半径 
+	}); 
+	 var index = parent.layer.getFrameIndex(window.name);//获取窗口索引
+	 $('#iframe')[0].style.width=$(window).width()+'px';
+	  $('#iframe')[0].style.height=$(window).height()+'px';
+	  $(window).resize(function ()
+    {
+		$('#iframe')[0].style.width=$(window).width()+'px';
+		$('#iframe')[0].style.height=$(window).height()+'px';
+	});
+	$('#iframe').attr('src',''+parent.$('#filePathVideo').val()+'');
+	//console.log($('#iframe').attr('src'));
+</script>
+<!-- 美化滚动条js -->
+<!-- 注意：jquery.nicescroll.js文件里的（rtlmode: "auto"属性。一般的滚动条都是垂直方向所以对此属性可能不注意。改为rtlmode：false,即
+可实现水平滚动。次文件已更改） -->
+</body>
+</html>

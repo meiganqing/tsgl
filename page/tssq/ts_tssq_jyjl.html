@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/SXSY/layuiadmin/layui/css/layui.css" />
+    <link rel="stylesheet" href="/SXSY/layuiadmin/style/admin.css">
+    <script src="/SXSY/js/jquery-1.11.3.min.js"></script>
+    <script src="/SXSY/layuiadmin/layui/layui.js"></script>
+    <script src="/SXSY/Widget/yanzheng/js/verify.js"></script>
+    <script src="/SXSY/js/SysCongfig.js"></script>
+    <script src="../../js/tssq/ts_tssq_jyjl.js"></script>
+</head>
+
+<body>
+    <div class="layui-fluid">
+        <div class="layui-card">
+            <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+                <div class="layui-inline">
+                    <label class="layui-form-label">查询条件：</label>
+                    <div class="layui-inline" style="width: 120px;">
+                        <select id="cxlb" lay-search lay-filter="cxlb">
+								<option value=""></option>
+							</select>
+                    </div>
+                </div>
+                <div class="layui-inline search-type" id="keyworDiv">
+                    <label class="layui-form-label" style="width: 80px;">关键字：</label>
+                    <div class="layui-inline" style="width: 260px;">
+                        <input class="layui-input key-words" name="keyWords" placeholder="请输入关键字" id="keyWords" autocomplete="on">
+                    </div>
+                </div>
+                <div class="layui-inline" style="margin-left: 30px;">
+                    <button class="layui-btn own-btn-red" type="button" name="searchData" id="searchData">查询</button>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn own-btn-blue" id="updateTable" onclick="updateDataTable()">刷新</button>
+                </div>
+            </div>
+            <div class="layui-card-body">
+                <table lay-filter="grid_table" id="grid_table"></table>
+            </div>
+        </div>
+    </div>
+
+    <div id="yqdiv" class="layui-fluid" style="display: none;">
+        <div class="layui-col-xs12 layui-col-sm12">
+            <label class="layui-form-label">延期时间</label>
+            <div class="layui-input-inline">
+                <input type="text" id="endtime" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-col-xs12 layui-col-sm12" style="margin-top: 20px;">
+            <div class="layui-form-item" style="display: flex;justify-content: center;">
+                <button class="layui-btn" id="delayid" type="button">确定延期</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>首页</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <link rel="stylesheet" href="/SXSY/layuiadmin/layui/css/layui.css" />
+    <link rel="stylesheet" href="/SXSY/layuiadmin/style/admin.css">
+    <link rel="stylesheet" href="/SXSY/Widget/yanzheng/css/verify.css" />
+    <link rel="stylesheet" href="./css/main.css">
+    </script>
+    <script src="/SXSY/js/jquery-1.11.3.min.js"></script>
+    <script src="/SXSY/layuiadmin/layui/layui.js"></script>
+    <script src="/SXSY/Widget/yanzheng/js/verify.js"></script>
+    <script src="/SXSY//widget/echarts/echarts.js"></script>
+    <script src="/SXSY/js/SysCongfig.js"></script>
+    <script src="./js/main.js"></script>
+
+</head>
+<style type="text/css">
+    .listcontent {
+        height: 400px;
+    }
+    
+    .layui-elip {
+        position: relative;
+        cursor: pointer;
+    }
+    
+    .layui-elip i {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border-radius: 12px;
+        position: absolute;
+        top: 6px;
+        left: 10px;
+        line-height: 25px;
+        color: #FFFFFF;
+        text-align: center;
+    }
+    
+    body .xul li {
+        /*border-top: 1px solid #EFF1F3;*/
+        border-radius: 7px;
+        padding-top: 10px;
+        padding-left: 10px;
+        margin: 8px;
+        color: #7B8292;
+        background-color: #F9F9FB;
+        box-sizing: border-box;
+        padding-bottom: 10px;
+        display: flex;
+    }
+    
+    body .xul li span:nth-child(3) {
+        display: inline-block;
+        width: 15%;
+        text-align: center;
+    }
+    
+    body .xul li span:nth-child(4) {
+        display: inline-block;
+        width: 20%;
+        text-align: center;
+    }
+    
+    body .xul li span:nth-child(2) {
+        display: inline-block;
+        width: 50%;
+        text-align: center;
+        overflow: hidden;
+        padding-left: 40px;
+    }
+</style>
+
+<body class="childrenBody" id="mainHome">
+    <div class="layui-fluid">
+        <div class="layui-row layui-col-space15">
+
+            <!--图书-->
+            <div id="lib" class="lib-display  layui-col-space15">
+                <div class="panel layui-col-sm6 layui-col-md3">
+                    <!--<a href="javascript:newTab('./Page/applyBook/myApproval.html?type=05&limit=20190413092338233884549048254','已借出图书')">-->
+
+                    <div class="panela">
+                        <div class="panel_icon panel_color_one">
+                            <i class="iconfont"></i>
+                            <p>借出数量</p>
+                        </div>
+                        <div class="panel_word">
+                            <span id="sumNumlib">0</span>
+                        </div>
+                        <div class="bottom-color1 bottom-color">
+                            <b class="arrow"></b>
+                        </div>
+                        <div class="right-color right-color1"></div>
+                    </div>
+                    <!--</a>-->
+                </div>
+                <div class="panel layui-col-sm6 layui-col-md3">
+                    <!--<a href="javascript:newTab('./Page/applyBook/myApproval.html?type=06&limit=20190413092355235583613074136','借阅延期')">-->
+
+                    <div class="panela">
+                        <div class="panel_icon panel_color_two ">
+                            <i class="iconfont "></i>
+                            <p>延期数量</p>
+                        </div>
+                        <div class="panel_word">
+                            <span class="inStorkeNum" id="inStorkeNumlib">0</span>
+                        </div>
+                        <div class="bottom-color2 bottom-color">
+                            <b class="arrow"></b>
+                        </div>
+                        <div class="right-color right-color2"></div>
+                    </div>
+                    <!--</a>-->
+                </div>
+                <div class="panel layui-col-sm6 layui-col-md3">
+                    <!--<a href="javascript:newTab('./Page/applyBook/myApproval.html?type=04&limit=2019041309242324238785926131','拒绝借出')">-->
+                    <div class="panela">
+                        <div class="panel_icon panel_color_three">
+                            <i class="iconfont "></i>
+                            <p>拒绝数量</p>
+                        </div>
+                        <div class="panel_word">
+                            <span id="outsideNumlib">0</span>
+
+                        </div>
+                        <div class="bottom-color3 bottom-color">
+                            <b class="arrow"></b>
+                        </div>
+                        <div class="right-color right-color3"></div>
+                    </div>
+                    <!--</a>-->
+                </div>
+                <div class="panel layui-col-sm6 layui-col-md3">
+                    <!--<a href="javascript:newTab('./Page/applyBook/myApproval.html?type=07&limit=20190413092338233884549048254','新申请图书')">-->
+
+                    <div href="javascript:;" data-url="" target="_blank" class="panela">
+                        <div class="panel_icon panel_color_four">
+                            <i class="iconfont "></i>
+                            <p>新申请</p>
+                        </div>
+                        <div class="panel_word">
+                            <span id="insideNumlib">0</span>
+
+                        </div>
+                        <div class="bottom-color4 bottom-color">
+                            <b class="arrow"></b>
+                        </div>
+                        <div class="right-color right-color4"></div>
+                    </div>
+                    <!--</a>-->
+                </div>
+            </div>
+
+            <div class="layui-col-md12">
+                <div class="layui-col-md8" style="padding-right: 20px;">
+                    <div class="layui-row layui-col-space15">
+                        <div class="layui-col-md12">
+                            <div class="layui-card">
+                                <div class="layui-card-header">出版社</div>
+                                <div class="layui-card-body">
+                                    <div carousel-item id="chart1" style="height:334px">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-card">
+                        <div class="layui-card-header">新申请图书</div>
+                        <div class="layui-card-body" style="height:334px">
+
+                            <div id="waitApprove"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="layui-col-md12 lib-display">
+                <div class="layui-col-md8" style="padding-right: 20px;">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            <span>图书类别</span>
+
+                        </div>
+                        <div class="layui-card-body">
+
+                            <div carousel-item id="chart2" style="height: 314px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            <span>延期图书</span>
+
+                        </div>
+                        <div class="layui-card-body">
+
+                            <div id="delayBook" style="height: 306px;"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="lib/js/jquery-1.8.3.min.js"></script>
+    <script src="layuiadmin/layui/layui.js?t=1"></script>
+    <script type="text/javascript" src="lib/js/echarts.js"></script>
+    <script type="text/javascript" src="lib/js/store.min.js"></script>
+    <script type="text/javascript" src="SysJs/xdDataMange.js"></script> -->\
+
+</body>
+
+</html>
